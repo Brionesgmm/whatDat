@@ -52,9 +52,9 @@ const MainScreen = () => {
       </ul>
       <Link to="/add-category">Add Category</Link>
       <Link to="/edit-category">Edit Category</Link>
-      <button onClick={requestOrientationPermission}>
+      {/* <button onClick={requestOrientationPermission}>
         Enable Tilt Functionality
-      </button>
+      </button> */}
     </div>
   );
 };
