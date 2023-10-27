@@ -52,14 +52,17 @@ const GameScreen = () => {
       countdownTimer = setTimeout(() => {
         setCountdown(null);
         setGameState("running");
-        setUsedWords([currentWord]); // Add the currentWord to the usedWords array when starting
+        moveToNextWord();
       }, 1000);
     }
     return () => clearTimeout(countdownTimer); // Cleanup on unmount
   }, [countdown, currentWord]);
 
   const startGame = () => {
-    // Implement countdown here (or in next steps)
+    const randomIndex = Math.floor(
+      Math.random() * currentCategory.words.length
+    );
+    setCurrentWord(currentCategory.words[randomIndex]);
     setCountdown("Ready");
   };
 
@@ -98,7 +101,6 @@ const GameScreen = () => {
     setUsedWords([]);
     setAnsweredWords([]);
     setTimeLeft(60);
-    setCurrentWord(currentCategory.words[0]);
   };
 
   const navigateToMainScreen = () => {
@@ -131,7 +133,7 @@ const GameScreen = () => {
           <h2>Game Over</h2>
           <p>Your Score: {score}</p>
           <ul>
-            {currentCategory.words.map((word) => (
+            {usedWords.map((word) => (
               <li
                 key={word}
                 style={{ opacity: answeredWords.includes(word) ? 1 : 0.5 }}
