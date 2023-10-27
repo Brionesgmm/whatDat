@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import CategoryContext from "./CategoryContext";
 
 const MainScreen = () => {
-  const [categories, setCategories] = useState([]);
-  const categoryContext = React.useContext(CategoryContext);
+  const { categories, setCategories } = React.useContext(CategoryContext); // Use the setCategories from the context
 
   useEffect(() => {
     // This function fetches the categories from the server
@@ -16,7 +15,6 @@ const MainScreen = () => {
         }
         const data = await response.json();
         setCategories(data.categories);
-        categoryContext.allCategories = data.categories;
         console.log(data.categories);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -32,7 +30,7 @@ const MainScreen = () => {
       <ul>
         {categories.map((category) => (
           <li key={category._id}>
-            <Link to={`/game${category._id}`}>{category.name}</Link>
+            <Link to={`/game/${category._id}`}>{category.name}</Link>
           </li>
         ))}
       </ul>

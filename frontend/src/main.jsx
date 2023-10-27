@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -9,36 +9,42 @@ import GameScreen from "./components/GameScreen";
 import EditCategory from "./components/EditCategory";
 import CategoryContext from "./components/CategoryContext";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainScreen />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/add-category",
-    element: <AddCategory />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/edit-category",
-    element: <EditCategory />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/game",
-    element: <GameScreen />,
-    errorElement: <ErrorPage />,
-  },
-]);
+const App = () => {
+  const [categories, setCategories] = useState([]); // Define state here
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainScreen />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/add-category",
+      element: <AddCategory />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/edit-category",
+      element: <EditCategory />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/game/:categoryId",
+      element: <GameScreen />,
+      errorElement: <ErrorPage />,
+    },
+  ]);
+
+  return (
+    <CategoryContext.Provider value={{ categories, setCategories }}>
+      <RouterProvider router={router} />
+    </CategoryContext.Provider>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <CategoryContext.Provider
-        value={{ allCategories: [] }}
-      ></CategoryContext.Provider>
-    </RouterProvider>
+    <App />
   </React.StrictMode>
 );

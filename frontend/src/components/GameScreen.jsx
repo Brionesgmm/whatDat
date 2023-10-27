@@ -15,19 +15,14 @@ const GameScreen = () => {
   const [countdown, setCountdown] = useState(null); // null means no countdown
   const categoryContext = React.useContext(CategoryContext); // <-- Use the context here
   console.log(categoryContext);
-  setCurrentCategory(
-    categoryContext.categories.find((cat) => cat._id === categoryId)
-  );
+  console.log(categoryId);
 
-  // You can later add state variables for time left, score, etc.
-
-  //   useEffect(() => {
-  //     const category = categories.find((cat) => cat.id === parseInt(categoryId));
-  //     setCurrentCategory(category);
-  //     if (category && category.words.length) {
-  //       setCurrentWord(category.words[0]); // Start with the first word for simplicity
-  //     }
-  //   }, [categoryId]);
+  useEffect(() => {
+    setCurrentCategory(
+      categoryContext.categories.find((category) => category._id === categoryId)
+    );
+  }, [categoryId, categoryContext.categories]);
+  console.log(currentCategory);
 
   useEffect(() => {
     let timerInterval;
