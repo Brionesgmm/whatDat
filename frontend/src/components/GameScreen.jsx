@@ -17,6 +17,22 @@ const GameScreen = () => {
   console.log(categoryContext);
   console.log(categoryId);
 
+  const requestOrientationPermission = async () => {
+    if (
+      typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function"
+    ) {
+      const permission = await DeviceOrientationEvent.requestPermission();
+      if (permission !== "granted") {
+        alert("Permission not granted to access device orientation");
+      }
+    }
+  };
+
+  useEffect(() => {
+    requestOrientationPermission();
+  }, []);
+
   useEffect(() => {
     setCurrentCategory(
       categoryContext.categories.find((category) => category._id === categoryId)
