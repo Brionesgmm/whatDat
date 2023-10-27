@@ -5,6 +5,22 @@ import CategoryContext from "./CategoryContext";
 const MainScreen = () => {
   const { categories, setCategories } = React.useContext(CategoryContext); // Use the setCategories from the context
 
+  const requestOrientationPermission = async () => {
+    if (
+      typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function"
+    ) {
+      const permission = await DeviceOrientationEvent.requestPermission();
+      if (permission !== "granted") {
+        alert("Permission not granted to access device orientation");
+      }
+    }
+  };
+
+  useEffect(() => {
+    requestOrientationPermission();
+  }, []);
+
   useEffect(() => {
     // This function fetches the categories from the server
     const fetchCategories = async () => {
@@ -36,6 +52,9 @@ const MainScreen = () => {
       </ul>
       <Link to="/add-category">Add Category</Link>
       <Link to="/edit-category">Edit Category</Link>
+      <button onClick={requestOrientationPermission}>
+        Enable Tilt Functionality
+      </button>
     </div>
   );
 };
