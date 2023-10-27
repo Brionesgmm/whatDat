@@ -107,6 +107,44 @@ const GameScreen = () => {
     navigate("/"); // Navigate to the root route
   };
 
+  const GameScreen = () => {
+    // ... [your existing state and effects]
+
+    const handleDeviceOrientation = (event) => {
+      const { beta } = event;
+
+      // Tilted forward past 45 degrees
+      if (beta < -45) {
+        markCorrect();
+      }
+      // Tilted backward past 45 degrees
+      else if (beta > 45) {
+        pass();
+      }
+    };
+
+    useEffect(() => {
+      if (gameState === "running") {
+        window.addEventListener("deviceorientation", handleDeviceOrientation);
+      } else {
+        window.removeEventListener(
+          "deviceorientation",
+          handleDeviceOrientation
+        );
+      }
+
+      // Cleanup
+      return () => {
+        window.removeEventListener(
+          "deviceorientation",
+          handleDeviceOrientation
+        );
+      };
+    }, [gameState]);
+
+    // ... [your existing functions and JSX render]
+  };
+
   return (
     <div>
       {((gameState === "not-started" && !countdown) ||
