@@ -41,17 +41,23 @@ const MainScreen = () => {
   }, []); // The empty array means this useEffect will run once when the component mounts
 
   return (
-    <div>
-      <h1>Welcome to the Game</h1>
-      <ul>
+    <div className="mainScreenSection">
+      <h1 className="gameTitle">What Dat?</h1>
+      <ul className="categories">
         {categories.map((category) => (
-          <li key={category._id}>
-            <Link to={`/game/${category._id}`}>{category.name}</Link>
+          <li className="categoryOption" key={category._id}>
+            <Link className="categoryLink" to={`/game/${category._id}`}>
+              {category.name}
+            </Link>
           </li>
         ))}
       </ul>
-      <Link to="/add-category">Add Category</Link>
-      <Link to="/edit-category">Edit Category</Link>
+      <Link className="addCategory" to="/add-category">
+        Add Category
+      </Link>
+      <Link className="editCategory" to="/edit-category">
+        Edit Category
+      </Link>
       {/* <button onClick={requestOrientationPermission}>
         Enable Tilt Functionality
       </button> */}

@@ -1,0 +1,191 @@
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #10b2e3;
+}
+
+body {
+  height: 100%;
+}
+
+/* Main Screen */
+
+.mainScreenSection {
+  text-align: center;
+  height: 100vh;
+}
+
+.gameTitle,
+.categoryTitle,
+.countDown {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  color: white;
+  padding-top: 1rem;
+  font-size: 7rem;
+}
+
+.categories {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.categoryOption {
+  flex: 1;
+  flex-basis: calc(33.33% - 10px);
+  margin: 5px;
+}
+
+.categoryLink {
+  text-decoration: none;
+  color: white;
+  border: white 1px solid;
+  padding: 0.5rem 1rem;
+  width: 150px;
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #f061f1;
+  border-radius: 5px;
+}
+
+.categoryLink:hover {
+  background-color: #3b5ea9;
+  color: white;
+}
+
+.addCategory,
+.editCategory,
+.restartBtn,
+.mainBtn {
+  margin-top: 1.5rem;
+  text-decoration: none;
+  color: white;
+  border: white 1px solid;
+  padding: 0.5rem 1rem;
+  width: 95%;
+  display: inline-block;
+  background-color: #3c049a;
+  border-radius: 5px;
+}
+
+.addCategory:hover,
+.editCategory:hover {
+  background-color: #0b6af1;
+  color: #ffffff;
+}
+
+/* Game Screen */
+
+.gameScreen {
+  height: 100vh;
+  text-align: center;
+}
+
+/* Start Screen */
+
+.startButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.startGame {
+  display: inline-block;
+  padding: 2rem;
+  font-size: 4rem;
+  border: white 0.2rem solid;
+  border-radius: 5px;
+  margin-top: 1rem;
+  color: rgb(69, 21, 248);
+  background-color: rgb(255, 39, 159);
+  min-width: 50%; /* Adjust this percentage as needed */
+}
+
+.backToMain {
+  margin-top: 1rem;
+  font-size: 2rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgb(255, 39, 159);
+  background-color: white;
+  color: rgb(69, 21, 248);
+  border-radius: 5px;
+}
+
+/* Ready Screen */
+
+.readyScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.countDown {
+  color: black;
+  font-size: 10rem;
+}
+
+/* Play Screen */
+
+.runningScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.passBtn,
+.correctBtn {
+  padding: 1.5rem 0;
+  border: white 1px solid;
+  border-radius: 5px;
+  font-family: "Fuzzy Bubbles";
+  font-size: 3rem;
+}
+
+.correctBtn {
+  background: rgb(0, 197, 26);
+}
+
+.passBtn {
+  background-color: orange;
+}
+
+.wordSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.word {
+  font-family: "Fuzzy Bubbles";
+  font-weight: bold;
+  font-size: 7rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.timeRemaining {
+  border: white 1px solid;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  color: white;
+  background-color: #3c049a;
+}
+
+/* Results Screen */
+
+.score {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: "Fuzzy Bubbles";
+}
+
+.scoredWords {
+  font-size: 2rem;
+  font-family: "Fuzzy Bubbles";
+}

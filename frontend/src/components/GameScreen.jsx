@@ -134,33 +134,49 @@ const GameScreen = () => {
   }, [gameState]);
 
   return (
-    <div>
+    <div className="gameScreen">
       {((gameState === "not-started" && !countdown) ||
         gameState === "ended") && (
-        <h1>{currentCategory ? currentCategory.name : "Loading..."}</h1>
+        <h1 className="categoryTitle">
+          {currentCategory ? currentCategory.name : "Loading..."}
+        </h1>
       )}
       {gameState === "not-started" && !countdown && (
-        <div>
-          <button onClick={startGame}>Start</button>
-          <button onClick={navigateToMainScreen}>Back to Main Screen</button>
+        <div className="startButtons">
+          <button className="startGame" onClick={startGame}>
+            Start
+          </button>
+          <button className="backToMain" onClick={navigateToMainScreen}>
+            Back to Main Screen
+          </button>
         </div>
       )}
-      {gameState === "not-started" && countdown && <h2>{countdown}</h2>}
+      {gameState === "not-started" && countdown && (
+        <div className="readyScreen">
+          <h2 className="countDown">{countdown}</h2>
+        </div>
+      )}
       {gameState === "running" && (
-        <div>
-          <div>Time left: {timeLeft} seconds</div>
-          <h2>{currentWord}</h2>
-          <button onClick={markCorrect}>Correct</button>
-          <button onClick={pass}>Pass</button>
+        <div className="runningScreen">
+          <button className="passBtn" onClick={pass}>
+            Pass
+          </button>
+          <div className="wordSection">
+            <div className="timeRemaining">{timeLeft}</div>
+            <h2 className="word">{currentWord}</h2>
+          </div>
+          <button className="correctBtn" onClick={markCorrect}>
+            Correct
+          </button>
         </div>
       )}
       {gameState === "ended" && (
-        <div>
-          <h2>Game Over</h2>
-          <p>Your Score: {score}</p>
-          <ul>
+        <div className="endScreen">
+          <p className="score">Your Score: {score}</p>
+          <ul className="playedWords">
             {usedWords.map((word) => (
               <li
+                className="scoredWords"
                 key={word}
                 style={{ opacity: answeredWords.includes(word) ? 1 : 0.5 }}
               >
@@ -168,8 +184,12 @@ const GameScreen = () => {
               </li>
             ))}
           </ul>
-          <button onClick={resetGame}>Restart</button>
-          <button onClick={navigateToMainScreen}>Back to Main Screen</button>
+          <button className="restartBtn" onClick={resetGame}>
+            Restart
+          </button>
+          <button className="mainBtn" onClick={navigateToMainScreen}>
+            Back to Main Screen
+          </button>
         </div>
       )}
     </div>
