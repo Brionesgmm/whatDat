@@ -111,11 +111,11 @@ const GameScreen = () => {
     const { gamma } = event;
 
     // Tilted forward past 45 degrees
-    if (gamma > -45) {
+    if (gamma < 0 && gamma > -45) {
       markCorrect();
     }
     // Tilted backward past 45 degrees
-    else if (gamma < 45) {
+    else if (gamma > 0 && gamma < 45) {
       pass();
     }
   };
