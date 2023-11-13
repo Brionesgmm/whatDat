@@ -2,11 +2,12 @@ body * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #10b2e3;
 }
 
 body {
-  height: 100%;
+  background-color: #f5f7fa;
+  color: #212529;
+  font-family: "Fuzzy Bubbles", sans-serif;
 }
 
 /* Main Screen */
@@ -20,9 +21,8 @@ body {
 .categoryTitle,
 .countDown {
   font-family: "Fuzzy Bubbles", sans-serif;
-  color: white;
   padding-top: 1rem;
-  font-size: 7rem;
+  font-size: 6rem;
 }
 
 .categories {
@@ -40,18 +40,29 @@ body {
 .categoryLink {
   text-decoration: none;
   color: white;
-  border: white 1px solid;
   padding: 0.5rem 1rem;
   width: 150px;
   display: inline-block;
   margin-right: 10px;
-  background-color: #f061f1;
+  background-color: #4e7ac7;
   border-radius: 5px;
 }
 
 .categoryLink:hover {
-  background-color: #3b5ea9;
-  color: white;
+  background-color: #ffc107;
+  color: #333333;
+}
+
+.categoryLink:active {
+  background-color: #ffc107;
+  color: #333333;
+  opacity: 0.85;
+}
+
+.categoryLink:focus {
+  border-color: #ffc107;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
 }
 
 .addCategory,
@@ -70,7 +81,9 @@ body {
 }
 
 .addCategory:hover,
-.editCategory:hover {
+.editCategory:hover,
+.mainBtn:hover,
+.restartBtn:hover {
   background-color: #0b6af1;
   color: #ffffff;
 }
@@ -94,22 +107,63 @@ body {
   display: inline-block;
   padding: 2rem;
   font-size: 4rem;
-  border: white 0.2rem solid;
+  border: 2px solid transparent;
   border-radius: 5px;
   margin-top: 1rem;
-  color: rgb(69, 21, 248);
-  background-color: rgb(255, 39, 159);
-  min-width: 50%; /* Adjust this percentage as needed */
+  color: #ffffff;
+  background-color: #4e7ac7;
+  border-radius: 10px;
+  min-width: 50%;
+}
+
+.startGame:hover {
+  background-color: #ffc107; /* Amber for highlight */
+  color: #333333; /* Dark Gray text for contrast */
+}
+
+.startGame:active,
+.addCategory:active,
+.editCategory:active {
+  background-color: #ffc107; /* Amber for consistency */
+  color: #333333; /* Dark Gray text */
+  opacity: 0.85;
+}
+
+.startGame:focus,
+.addCategory:focus,
+.editCategory:focus {
+  outline: none;
+  border-color: #ffc107; /* Amber border */
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
 }
 
 .backToMain {
   margin-top: 1rem;
   font-size: 2rem;
   padding: 0.5rem 1.5rem;
-  border: 1px solid rgb(255, 39, 159);
-  background-color: white;
-  color: rgb(69, 21, 248);
+  border: 2px solid #4e7ac7;
+  background-color: #f0f4f8;
+  color: #333333;
   border-radius: 5px;
+}
+
+.backToMain:hover {
+  background-color: #ffc107; /* Amber for highlight */
+  color: #333333; /* Dark Gray text for contrast */
+  border-color: #ffc107;
+}
+
+.backToMain:active {
+  background-color: #ffc107; /* Amber for consistency */
+  color: #333333; /* Dark Gray text */
+  border-color: #ffc107; /* Amber border for consistency */
+  opacity: 0.85;
+}
+
+.backToMain:focus {
+  outline: none;
+  border-color: #ffc107; /* Amber border */
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
 }
 
 /* Ready Screen */
@@ -123,7 +177,7 @@ body {
 
 .countDown {
   color: black;
-  font-size: 10rem;
+  font-size: 9rem;
 }
 
 /* Play Screen */
@@ -163,7 +217,7 @@ body {
 .word {
   font-family: "Fuzzy Bubbles";
   font-weight: bold;
-  font-size: 7rem;
+  font-size: 6rem;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -188,4 +242,27 @@ body {
 .scoredWords {
   font-size: 2rem;
   font-family: "Fuzzy Bubbles";
+}
+
+@media (max-width: 500px) {
+  .word {
+    font-size: 4rem; /* This is the minimum font size */
+  }
+
+  .countDown {
+    font-size: 5rem;
+  }
+
+  .categoryTitle {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .score {
+    font-size: 1.5rem;
+  }
+
+  .scoredWords {
+    font-size: 1rem;
+  }
 }
