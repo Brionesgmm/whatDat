@@ -108,14 +108,14 @@ const GameScreen = () => {
   };
 
   const handleDeviceOrientation = (event) => {
-    const { beta } = event;
+    const { gamma } = event;
 
     // Tilted forward past 45 degrees
-    if (beta < -45) {
+    if (gamma < -45) {
       markCorrect();
     }
     // Tilted backward past 45 degrees
-    else if (beta > 45) {
+    else if (gamma > 45) {
       pass();
     }
   };
