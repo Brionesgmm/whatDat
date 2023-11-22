@@ -6,22 +6,22 @@ const MainScreen = () => {
   const { categories, setCategories } = React.useContext(CategoryContext); // Use the setCategories from the context
   const [orientationPermission, setOrientationPermission] = useState("default");
 
-  const requestOrientationPermission = async () => {
-    if (
-      typeof DeviceOrientationEvent !== "undefined" &&
-      typeof DeviceOrientationEvent.requestPermission === "function"
-    ) {
-      try {
-        const permission = await DeviceOrientationEvent.requestPermission();
-        setOrientationPermission(permission); // Update the state based on the permission status
-      } catch (error) {
-        console.error("Error requesting device orientation permission:", error);
-        setOrientationPermission("denied");
-      }
-    } else {
-      setOrientationPermission("not_required"); // For devices/browsers that don't support or require it
-    }
-  };
+  // const requestOrientationPermission = async () => {
+  //   if (
+  //     typeof DeviceOrientationEvent !== "undefined" &&
+  //     typeof DeviceOrientationEvent.requestPermission === "function"
+  //   ) {
+  //     try {
+  //       const permission = await DeviceOrientationEvent.requestPermission();
+  //       setOrientationPermission(permission); // Update the state based on the permission status
+  //     } catch (error) {
+  //       console.error("Error requesting device orientation permission:", error);
+  //       setOrientationPermission("denied");
+  //     }
+  //   } else {
+  //     setOrientationPermission("not_required"); // For devices/browsers that don't support or require it
+  //   }
+  // };
 
   // useEffect(() => {
   //   requestOrientationPermission();
@@ -64,7 +64,7 @@ const MainScreen = () => {
       <Link className="editCategory" to="/edit-category">
         Edit Category
       </Link>
-      {orientationPermission === "default" && (
+      {/* {orientationPermission === "default" && (
         <button onClick={requestOrientationPermission}>
           Enable Tilt Functionality
         </button>
@@ -76,7 +76,7 @@ const MainScreen = () => {
 
       {orientationPermission === "granted" && (
         <p>Device orientation permission granted!</p>
-      )}
+      )} */}
     </div>
   );
 };
