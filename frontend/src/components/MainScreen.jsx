@@ -23,9 +23,9 @@ const MainScreen = () => {
     }
   };
 
-  useEffect(() => {
-    requestOrientationPermission();
-  }, []);
+  // useEffect(() => {
+  //   requestOrientationPermission();
+  // }, []);
 
   useEffect(() => {
     // This function fetches the categories from the server
